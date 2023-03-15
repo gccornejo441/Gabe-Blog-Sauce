@@ -6,16 +6,16 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.gabecornejo.com/',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteRepo: 'https://github.com/gccornejo441/nextjs-gabe-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
-  email: 'address@yoursite.com',
-  github: 'https://github.com',
-  twitter: 'https://twitter.com/Twitter',
+  email: 'gaberunsalot@gmail.com',
+  github: 'https://github.com/gccornejo441',
+  twitter: 'https://twitter.com/gcornejo555',
   facebook: 'https://facebook.com',
-  youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
+  youtube: 'https://www.youtube.com/@gaberunsalot',
+  linkedin: 'https://www.linkedin.com/in/gabecornejo/',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
