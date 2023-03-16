@@ -1,25 +1,17 @@
 import { useState } from 'react'
 import figlet from 'figlet'
 import { PageSEO } from '@/components/SEO'
-import standard from 'figlet/importable-fonts/Standard.js'
-import banner from 'figlet/importable-fonts/Banner.js'
-import small from 'figlet/importable-fonts/Small.js'
 import siteMetadata from '@/data/siteMetadata'
-import ansiShadow from 'figlet/importable-fonts/ANSI Shadow.js'
-
-const availableFonts = [
-  { name: 'Standard', font: standard },
-  { name: 'Big', font: banner },
-  { name: 'Small', font: small },
-  { name: 'ANSI Shadow', font: ansiShadow },
-  // Add more fonts here
-]
 
 function AsciiArt() {
   const [name, setName] = useState('')
   const [font, setFont] = useState('Standard')
   const [asciiArt, setAsciiArt] = useState('')
   const [horizontalLayout, setHorizontalLayout] = useState('default')
+
+  figlet.defaults({
+    fontPath: '/fonts',
+  })
 
   const handleNameChange = (event) => {
     setName(event.target.value.slice(0, 50)) // set the max limit to 50 characters
@@ -35,8 +27,7 @@ function AsciiArt() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    figlet.parseFont(font, availableFonts.find((f) => f.name === font).font)
-    figlet.text(
+    figlet(
       name,
       {
         font: font,
@@ -74,7 +65,7 @@ function AsciiArt() {
                 maxLength="50"
                 rows="1"
               />
-              <span className="text-sm text-gray-500 text-sageGreen dark:text-forestGreen600">
+              <span className="text-sm text-sageGreen dark:text-forestGreen600">
                 {name.length}/50
               </span>
             </div>
@@ -87,11 +78,16 @@ function AsciiArt() {
                 value={font}
                 onChange={handleFontChange}
               >
-                {availableFonts.map((f) => (
-                  <option key={f.name} value={f.name}>
-                    {f.name}
-                  </option>
-                ))}
+                <option value="3D Diagonal">3D Diagonal</option>
+                <option value="Dancing Font">Dancing Font</option>
+                <option value="Ghost">Ghost</option>
+                <option value="Graffiti">Graffiti</option>
+                <option value="Patorjk's Cheese">Patorjk's Cheese</option>
+                <option value="Standard" defaultValue>
+                  Standard
+                </option>
+                <option value="Pagga">Pagga</option>
+                <option value="Pawp">Pawp</option>
               </select>
             </div>
             <div className="mb-4">
