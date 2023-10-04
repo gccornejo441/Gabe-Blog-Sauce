@@ -21,10 +21,14 @@ export default function Footer() {
           <div>{` • `}</div>
           <Link href="/">{siteMetadata.title}</Link>
         </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
-            Tailwind Nextjs Theme
-          </Link>
+        <div className="mb-8 text-center text-sm text-gray-500 dark:text-gray-400">
+          <blockquote>
+            <p>
+              "You have power over your mind — not outside events. Realize this, and you will find
+              strength."
+            </p>
+            <p>- Marcus Aurelius</p>
+          </blockquote>
         </div>
       </div>
     </footer>

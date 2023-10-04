@@ -2,7 +2,7 @@
 name: Gabe Cornejo
 avatar: /static/images/gabe-with-sunglasses.png
 occupation: SWE
-company: WWD
+company: -A-
 email: gaberunsalot@gmail.com
 twitter: https://twitter.com/gcornejo555
 linkedin: https://www.linkedin.com/in/gabecornejo/
