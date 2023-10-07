@@ -7,6 +7,9 @@ import formatDate from '@/lib/utils/formatDate'
 import Image from 'next/image'
 import NewsletterForm from '@/components/NewsletterForm'
 import logo from '../public/static/images/gabe-with-sunglasses.png'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '@/lib/firebase'
+import { signOut } from 'firebase/auth'
 
 const MAX_DISPLAY = 2
 
@@ -16,7 +19,21 @@ export async function getStaticProps() {
   return { props: { posts } }
 }
 
-export default function Home({ posts }) {
+const Home = ({ posts }) => {
+  const [user, loading, error] = useAuthState(auth)
+
+  function onSignout() {
+    signOut(auth)
+      .then(() => {
+        alert('Signed Out')
+      })
+      .catch((error) => {
+        // An error occurred during sign-out.
+        console.error('Error signing out:', error)
+        alert(error)
+      })
+  }
+
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
@@ -34,12 +51,30 @@ export default function Home({ posts }) {
               Welcome to my Blog
             </h1>
             <p className="mt-4 text-lg text-gray-800">{siteMetadata.description}</p>
-            <div className="mt-6">
-              <Link href="/blog">
-                <a className="inline-block rounded-lg bg-desertSand px-4 py-3 font-medium text-white hover:bg-forestGreen600 hover:text-white">
-                  Get started
-                </a>
-              </Link>
+            <div className="flex">
+              <div className="m-6">
+                <Link href="/blog">
+                  <a className="inline-block rounded-lg bg-desertSand px-4 py-3 font-medium text-white hover:bg-forestGreen600 hover:text-white">
+                    Get started
+                  </a>
+                </Link>
+              </div>
+              <div className="m-6">
+                {!user ? (
+                  <Link href="/account/login">
+                    <a className="inline-block rounded-lg bg-desertSand px-4 py-3 font-medium text-white hover:bg-forestGreen600 hover:text-white">
+                      Login
+                    </a>
+                  </Link>
+                ) : (
+                  <button
+                    onClick={onSignout}
+                    className="inline-block rounded-lg bg-forestGreen600 px-4 py-3 font-medium text-white hover:bg-desertSand hover:text-white"
+                  >
+                    Logout
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -121,3 +156,5 @@ export default function Home({ posts }) {
     </>
   )
 }
+
+export default Home

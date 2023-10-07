@@ -2,6 +2,7 @@ import { useState } from 'react'
 import figlet from 'figlet'
 import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
+import Link from '@/components/Link'
 
 function AsciiArt() {
   const [name, setName] = useState('')
@@ -124,6 +125,13 @@ export default function Home() {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
+      <div className="m-6">
+        <Link href="/explore">
+          <a className="inline-block rounded-lg bg-forestGreen600 px-4 py-3 font-medium text-white hover:bg-desertSand hover:text-white">
+            Personal Images
+          </a>
+        </Link>
+      </div>
       <AsciiArt />
     </>
   )

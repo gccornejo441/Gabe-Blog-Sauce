@@ -40,6 +40,19 @@ module.exports = {
         forestGreen600: '#3A6A59',
         desertSand: '#D6C18A',
         sageGreen: '#B9C8BC',
+        straw: {
+          50: '#faf8f2',
+          100: '#f4efe0',
+          200: '#e9debf',
+          300: '#d6c18a',
+          400: '#cbab6c',
+          500: '#c0954f',
+          600: '#b28144',
+          700: '#94673a',
+          800: '#785334',
+          900: '#61452d',
+          950: '#342316',
+        },
       },
       typography: (theme) => ({
         DEFAULT: {
