@@ -6,7 +6,7 @@ import { auth } from '@/lib/firebase'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-export default function Explore({ posts }) {
+export default function Explore() {
   const [user, loading, error] = useAuthState(auth)
   const router = useRouter()
 
@@ -14,7 +14,7 @@ export default function Explore({ posts }) {
     if (!(user || loading)) {
       router.push('/account/login')
     }
-  }, [user, loading])
+  }, [user, loading, router])
 
   // Server-render loading state
   if (!user || user.isLoggedIn === false) {
