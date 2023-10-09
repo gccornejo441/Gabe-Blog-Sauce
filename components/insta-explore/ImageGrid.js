@@ -21,22 +21,8 @@ const ImageGrid = () => {
 
   return (
     <div>
-      <div className="masterContainer">
-        <div className="rowImageContainer">
-          <ImageItemContainer images={imageUrl} />
-          <ImageItemContainer images={imageUrl} />
-          <ImageItemContainer images={imageUrl} />
-        </div>
-        <div className="rowImageContainer">
-          <ImageItemContainer images={imageUrl} />
-          <ImageItemContainer images={imageUrl} />
-          <ImageItemContainer images={imageUrl} />
-        </div>
-        <div className="rowImageContainer">
-          <ImageItemContainer images={imageUrl} />
-          <ImageItemContainer images={imageUrl} />
-          <ImageItemContainer images={imageUrl} />
-        </div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3">
+        <ImageItemContainer images={imageUrl} />
       </div>
     </div>
   )
