@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { ArrowUpTrayIcon, XMarkIcon } from '@heroicons/react/24/solid'
+import Link from '@/components/Link'
 
 const Dropzone = ({ className }) => {
   const [files, setFiles] = useState([])
@@ -53,27 +54,30 @@ const Dropzone = ({ className }) => {
 
     const formData = new FormData()
     files.forEach((file) => formData.append('file', file))
-    formData.append('upload_preset', 'gabe_and_megan')
+    formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET)
 
     const URL = process.env.NEXT_PUBLIC_CLOUDINARY_URL
-    console.log(URL)
+
     const data = await fetch(URL, {
       method: 'POST',
       body: formData,
     }).then((res) => res.json())
 
-    console.log(data)
+    // console.log(data)
   }
 
   return (
-    <form className="rounded-lg border-2 border-black bg-white" onSubmit={handleSubmit}>
+    <form className="rounded-lg bg-white p-6 text-forestGreen600 shadow-md" onSubmit={handleSubmit}>
+      <div className="mb-5 flex justify-center">
+        <h1 className="text-2xl font-semibold">Upload Photos</h1>
+      </div>
       <div
         {...getRootProps({
           className: className,
         })}
       >
         <input {...getInputProps()} />
-        <div className="flex flex-col items-center justify-center gap-4">
+        <div className="flex flex-col items-center justify-center gap-4 rounded-lg border border-forestGreen500 bg-forestGreen50 p-10">
           <ArrowUpTrayIcon className="h-5 w-5 fill-current" />
           {isDragActive ? (
             <p>Drop the files here ...</p>
@@ -90,20 +94,20 @@ const Dropzone = ({ className }) => {
           <button
             type="button"
             onClick={removeAll}
-            className="border-secondary-400 hover:bg-secondary-400 mt-1 rounded-md border px-3 text-[12px] font-bold uppercase tracking-wider text-neutral-500 transition-colors hover:text-white"
+            className="mt-1 rounded-md border border-red-500 bg-red-500 px-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-red-500"
           >
             Remove all files
           </button>
           <button
             type="submit"
-            className="ml-auto mt-1 rounded-md border border-purple-400 px-3 text-[12px] font-bold uppercase tracking-wider text-neutral-500 transition-colors hover:bg-purple-400 hover:text-white"
+            className="ml-auto mt-1 rounded-md border  border-forestGreen500 bg-forestGreen500 px-3 text-[12px] font-bold uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-forestGreen500"
           >
             Upload to Cloudinary
           </button>
         </div>
 
         {/* Accepted files */}
-        <h3 className="title mt-10 border-b pb-3 text-lg font-semibold text-neutral-600">
+        <h3 className="title mt-10 border-b pb-3 text-lg font-semibold text-forestGreen600">
           Accepted Files
         </h3>
         <ul className="mt-6 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
@@ -126,20 +130,20 @@ const Dropzone = ({ className }) => {
               >
                 <XMarkIcon className="hover:fill-secondary-400 h-5 w-5 fill-white transition-colors" />
               </button>
-              <p className="mt-2 text-[12px] font-medium text-neutral-500">{file.name}</p>
+              <p className="mt-2 text-[12px] font-medium text-forestGreen600">{file.name}</p>
             </li>
           ))}
         </ul>
 
         {/* Rejected Files */}
-        <h3 className="title mt-24 border-b pb-3 text-lg font-semibold text-neutral-600">
+        <h3 className="title mt-24 border-b pb-3 text-lg font-semibold text-forestGreen600">
           Rejected Files
         </h3>
         <ul className="mt-6 flex flex-col">
           {rejected.map(({ file, errors }) => (
             <li key={file.name} className="flex items-start justify-between">
               <div>
-                <p className="mt-2 text-sm font-medium text-neutral-500">{file.name}</p>
+                <p className="mt-2 text-sm font-medium text-forestGreen600">{file.name}</p>
                 <ul className="text-[12px] text-red-400">
                   {errors.map((error) => (
                     <li key={error.code}>{error.message}</li>
@@ -148,7 +152,7 @@ const Dropzone = ({ className }) => {
               </div>
               <button
                 type="button"
-                className="border-secondary-400 hover:bg-secondary-400 mt-1 rounded-md border py-1 px-3 text-[12px] font-bold uppercase tracking-wider text-neutral-500 transition-colors hover:text-white"
+                className="border-secondary-400 hover:bg-secondary-400 mt-1 rounded-md border py-1 px-3 text-[12px] font-bold uppercase tracking-wider text-forestGreen600 transition-colors hover:text-white"
                 onClick={() => removeRejected(file.name)}
               >
                 remove

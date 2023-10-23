@@ -6,8 +6,13 @@ import SectionContainer from './SectionContainer'
 import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
+import Menu from '@/components/Menu'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '@/lib/firebase'
 
 const LayoutWrapper = ({ children }) => {
+  const [user, loading, error] = useAuthState(auth)
+
   return (
     <SectionContainer>
       <div className="flex h-screen flex-col justify-between">
@@ -46,6 +51,7 @@ const LayoutWrapper = ({ children }) => {
         </header>
         <main className="mb-auto">{children}</main>
         <Footer />
+        {!user === false ? <Menu /> : null}
       </div>
     </SectionContainer>
   )

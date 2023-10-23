@@ -126,7 +126,7 @@ export default function Home() {
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
       <div className="m-6">
-        <Link href="/explore">
+        <Link href="/fun/explore">
           <a className="inline-block rounded-lg bg-forestGreen600 px-4 py-3 font-medium text-white hover:bg-desertSand hover:text-white">
             Personal Images
           </a>

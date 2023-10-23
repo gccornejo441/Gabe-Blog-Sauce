@@ -75,7 +75,7 @@ const LoginForm = () => {
   }
 
   if (user) {
-    router.push('/explore')
+    router.push('/fun/explore')
   }
   return (
     <div className="z-10 mx-auto w-full max-w-md space-y-8 rounded-xl bg-straw-200 p-10">
