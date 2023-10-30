@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { CldImage } from 'next-cloudinary'
 import ImageCard from '@/components/insta-explore/ImageCard'
-import cloudinary from '@/lib/utils/CloudinaryConfiguration'
+import cloudinary from '@/lib/utils/cloudinary'
 import getBase64ImageUrl from '@/lib/utils/generateBlurPlaceholder'
 import { Masonry } from 'react-plock'
 import { Fragment } from 'react/cjs/react.production.min'
@@ -45,20 +45,6 @@ export default function Explore({ images }) {
                 return (
                   <Fragment key={id}>
                     {index === 0}
-                    {/* <CldImage
-                      alt="Willian Justen photo"
-                      className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                      style={{ transform: 'translate3d(0, 0, 0)' }}
-                      placeholder="blur"
-                      blurDataURL={blurDataUrl}
-                      src={public_id}
-                      width={width > height ? 1280 : 853}
-                      height={height > width ? 1280 : 853}
-                      format="webp"
-                      loading="lazy"
-                      sizes="(max-width: 648px) 100vw, 25vw"
-                    /> */}
-
                     <ImageCard
                       key={id}
                       id={id}
