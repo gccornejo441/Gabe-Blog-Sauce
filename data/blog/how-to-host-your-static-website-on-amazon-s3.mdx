@@ -1,0 +1,81 @@
+---
+title: 'How to Host Your Static Website on Amazon S3'
+date: '2024-04-12'
+tags:
+  [
+    'Amazon S3',
+    'Static Website Hosting',
+    'AWS',
+    'Web Development',
+    'Cloud Storage',
+    'Bucket Configuration',
+    'Permissions',
+    'Public Access',
+    'Website Deployment',
+  ]
+draft: false
+summary: 'A Step-by-Step Guide to Hosting Static Websites on Amazon S3'
+---
+
+# How to Host Your Static Website on Amazon S3
+
+Scroll to the bottom if you would like to watch the walkthrough.
+
+Amazon S3 is a great option for hosting static sites. This guide provides a quick step-by-step process to get your static website up and running on S3.
+
+## Steps to Host Your Site on Amazon S3
+
+1. **Log into AWS**  
+   Open the Amazon S3 dashboard in your AWS Management Console.
+
+2. **Create Bucket**  
+   Click “Create bucket”. Name your bucket `runmore-test-site`. Ensure 'Block all public access' is disabled to make your website publicly accessible.
+
+3. **Go Into Your Bucket**  
+   Navigate to your newly created `runmore-test-site` bucket.
+
+4. **Upload Content**  
+   Drag and drop your website files (like `index.html`) into the bucket or use the "Add files" option.
+
+5. **Open Permissions Tab**  
+   Go to the “Permissions” tab in your bucket settings.
+
+6. **Edit Bucket Policy**  
+   Click on “Bucket policy” and add the following policy to allow public access:
+
+ ```json
+   {
+       "Version": "2012-10-17",
+       "Statement": [
+           {
+               "Effect": "Allow",
+               "Principal": "*",
+               "Action": "s3:GetObject",
+               "Resource": "arn:aws:s3:::runmore-test-site/*"
+           }
+       ]
+   }
+```
+7. **Vist Your Site**
+    Use the bucket’s public URL to access your site. This URL can be found in the bucket properties under “Static website hosting”.
+
+    Your static website will now be live on Amazon S3. This setup provides a cost-effective solution for hosting websites that do not require server-side code.
+
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/XO7bFaTfcsI?si=OKkf8-tWbC149UFE"
+  title="YouTube video player"
+  frameBorder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
+
+
+Discover more at:
+
+- Amazon Web Services: [AWS Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html)
+
+If you have any further questions, feel free to ask!
